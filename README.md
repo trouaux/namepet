@@ -14,6 +14,23 @@ The "nametag":
 - `wat`: Context / metadata
 - `dat`: Data
 
+## Config
+
+```
+~/.namepet
+    yourself.jams
+    namepet.sqlite
+```
+
+`yourself.jams`
+
+```
+{
+  selfname  "ali cat"
+  privkey   <encrypted private key>
+}
+```
+
 ## Core rule
 
 Only add valid signed nametags
