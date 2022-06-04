@@ -1,23 +1,32 @@
 const program = require('commander');
 const process = require("process")
+const readline = require("readline")
 
 program // node main.js add
     .command('add')
     .description('')
     .action(() => {
-        // process.stdin.setEncoding('utf8')
-        process.stdin.on('data', data => {
-            run(data)
-            process.exit()
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout  
+            })
+
+        let userInput = "";
+
+        rl.question("JAM input:\n", function(string){
+            userInput = string;
+            add(string);
+            rl.close();
         })
     });
+
 
 program //node main.js get name
     .command('get')
     .argument('<name>', '')
     .description('')
     .action((name) => {
-        get(name)
+        ask(name)
     })
 
 program //node main.js ask data
@@ -30,8 +39,8 @@ program //node main.js ask data
 
 program.parse(process.argv);
 
-function add(input){
-    console.log(input)
+function add(jam){
+    console.log(jam)
 }
 
 function ask(data){
