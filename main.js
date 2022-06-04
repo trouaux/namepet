@@ -11,13 +11,21 @@ program // node main.js add
             output: process.stdout  
             })
 
-        let userInput = "";
+        var input = [];
 
-        rl.question("JAM input:\n", function(string){
-            userInput = string;
-            add(string);
-            rl.close();
-        })
+        rl.prompt();
+
+        rl.on('line', function (cmd) {
+            input.push(cmd);
+            if (cmd == ""){ // bad idea
+                rl.close()
+            }
+        });
+
+        rl.on('close', function (cmd) {
+            add(input.join('\n'));
+            process.exit(0);
+        });
     });
 
 
@@ -49,4 +57,8 @@ function ask(data){
 
 function get(name){
     console.log(name)
+}
+
+function run(){
+
 }
