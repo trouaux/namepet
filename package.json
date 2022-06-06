@@ -7,6 +7,8 @@
         "better-sqlite3": "^7.5.3"
     },
     "devDependencies": {
+        "@noble/secp256k1": "^1.5.5",
+        "rlp": "^3.0.0",
         "tapzero": "^0.6.1"
     }
 }
