@@ -21,6 +21,16 @@ test('make then create', t => {
     )
 })
 
+test('double make resets db', t => {
+  var db = make()
+  t.ok(create(db))
+  t.ok(db.prepare('SELECT 1 FROM namepet').all())
+  t.ok(db = make())
+  t.throws(
+    _ => db.prepare('SELECT 1 FROM namepet').all()
+  )
+})
+
 test('rlp integer encode', t => {
   const exp     = 1024
   const exphex  = exp.toString(16)
